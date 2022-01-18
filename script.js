@@ -55,43 +55,30 @@ $(document).ready(function() {
       $("#resultsH3").append(`<span> for the "${searchSubject}" </span>` ); 
     }
   
-  let slicedLocalData = await localData.slice(sliceStart, localData.length-1);
+    let slicedLocalData = await localData.slice(sliceStart, localData.length-1);
 
-  await $.each(slicedLocalData, (index, item) => {
+    await $.each(slicedLocalData, (index, item) => {
     
-    if (index == numOfResults) {return false;}
+      if (index == numOfResults) {return false;}
 
-    if (item.data[0].liked != true) {
-      $("#search-list").append(`
-      <div class="item-cont box-border-shadow"> 
-        <div class="item-header">
-          <span hidden data-nasaid=${item.data[0].nasa_id} ></span>
-          <i class="fas fa-heart none" data-heartid='${index}'></i>          
-          <h4>${item.data[0].title}
-            <button data-buttonid="${index}" class="like-btn">Like</button>
-          </h4>  
-          <p>Date: ${item.data[0].date_created.slice(0, 10)}</p>  
-        </div>
-        <div><img src="${item.links[0].href}" alt="Nasa"> </div>
-      </div>                
-      `);
-    } else {
-      $("#search-list").append(`
-      <div class="item-cont box-border-shadow">  
-        <div class="item-header">
-          <span hidden data-nasaid=${item.data[0].nasa_id} ></span>
-          <i class="fas fa-heart" data-heartid='${index}'></i>          
-          <h4>${item.data[0].title}
-            <button data-buttonid="${index}" class="like-btn">Unlike</button>
-          </h4>  
-        </div>
-        <div>
-          <img src="${item.links[0].href}" alt="Nasa">          
-        </div>
-      </div>                
-      `);
-    }
+      const heartDisplayClass = !item.data[0].liked ? " none" : "";
+      const likeBtnText = !item.data[0].liked ? "Like" : "Unlike";
+
+        $("#search-list").append(`
+        <div class="item-cont box-border-shadow"> 
+          <div class="item-header">
+            <span hidden data-nasaid=${item.data[0].nasa_id} ></span>
+            <i class="fas fa-heart ${heartDisplayClass}" data-heartid='${index}'></i>          
+            <h4>${item.data[0].title}
+              <button data-buttonid="${index}" class="like-btn">${likeBtnText}</button>
+            </h4>  
+            <p>Date: ${item.data[0].date_created.slice(0, 10)}</p>  
+          </div>
+          <div><img src="${item.links[0].href}" alt="Nasa"> </div>
+        </div>                
+        `);
   }); //closing $each
+
   $("#loadmore-btn").removeClass("none");
   $(".like-btn").off("click");
   $(".like-btn").on('click', likeBtnListener);
