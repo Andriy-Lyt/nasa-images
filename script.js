@@ -1,6 +1,5 @@
 $(document).ready(function() {
   console.log('page is loaded');
-  // console.log("search ln3: ", localStorage.getItem("search"))
 
   // global vars ====================
   const numOfResults = 8;
@@ -23,7 +22,7 @@ $(document).ready(function() {
       const container = button.closest(".item-cont");
       const heart = container.find(".fa-heart");
       heart.toggleClass("none");
-      console.log("btn clicked");
+      // console.log("btn clicked");
     
       if(!heart.hasClass("none")) {
         button.html('Unlike');
@@ -35,24 +34,13 @@ $(document).ready(function() {
     nasaId = container.find("[data-nasaid]").attr("data-nasaid");
     let localData = JSON.parse(localStorage.getItem("localData"));
   
-    if (heart.hasClass("none")) {
       for (let obj of localData) {
         if (obj.data[0].nasa_id == nasaId) {
-          obj.data[0].liked = false;
-          // console.log("ln 147, liked = ", obj.data[0].liked);
+          obj.data[0].liked = heart.hasClass("none") ? false : true;
           localStorage.setItem("localData", JSON.stringify(localData));
           break;
         }
       };
-    } else {
-      for (let obj of localData) {
-        if (obj.data[0].nasa_id == nasaId) {
-          obj.data[0].liked = true;
-          localStorage.setItem("localData", JSON.stringify(localData));
-          break;
-        };
-      };
-    }
   }  
   
  //display data from local storage ----------
@@ -169,7 +157,7 @@ function submitForm(e){
 } //closing submitForm()
 
 //Listeners ====================
-//Like button listener is only used inside the dispplay() function ----------
+//Like button listener is only used inside the dispplay() function 
 
 //empty form input Subject listener
 $( "#search_input" ).on('input', function() {
@@ -211,5 +199,6 @@ $("#loadmore-btn").on('click', function(){
 // window.onbeforeunload = () => {
 //   localStorage.removeItem("localData");
 //   localStorage.removeItem("wasSearched");
+//   localStorage.removeItem("searchSubject");
 // };
 
