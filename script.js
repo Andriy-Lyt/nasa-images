@@ -23,6 +23,7 @@ $(document).ready(function() {
       const container = button.closest(".item-cont");
       const heart = container.find(".fa-heart");
       heart.toggleClass("none");
+      console.log("btn clicked");
     
       if(!heart.hasClass("none")) {
         button.html('Unlike');
@@ -32,7 +33,6 @@ $(document).ready(function() {
   
   //add the like to local storage 
     nasaId = container.find("[data-nasaid]").attr("data-nasaid");
-      // console.log("nasaId: ", nasaId);
     let localData = JSON.parse(localStorage.getItem("localData"));
   
     if (heart.hasClass("none")) {
@@ -67,7 +67,7 @@ $(document).ready(function() {
       $("#resultsH3").append(`<span> for the "${searchSubject}" </span>` ); 
     }
   
-  let slicedLocalData = await localData.slice(sliceStart);
+  let slicedLocalData = await localData.slice(sliceStart, localData.length-1);
 
   await $.each(slicedLocalData, (index, item) => {
     
@@ -105,12 +105,13 @@ $(document).ready(function() {
     }
   }); //closing $each
   $("#loadmore-btn").removeClass("none");
+  $(".like-btn").off("click");
   $(".like-btn").on('click', likeBtnListener);
  } 
 
 //Fetch remote data -----------
 function getData(searchURL) {
-  const API = "http://images-api.nasa.gov/search?media_type=image";
+  const API = "https://images-api.nasa.gov/search?media_type=image";
 
   localStorage.removeItem("localData");
 
@@ -168,8 +169,7 @@ function submitForm(e){
 } //closing submitForm()
 
 //Listeners ====================
-//Like button listener ----------
-  $(".like-btn").on('click', likeBtnListener);
+//Like button listener is only used inside the dispplay() function ----------
 
 //empty form input Subject listener
 $( "#search_input" ).on('input', function() {
@@ -199,15 +199,17 @@ $("#search_btn").on('click', submitForm);
 
 //load more images listener
 $("#loadmore-btn").on('click', function(){
-  // console.log("log-more-btn clicked");
-
+    // console.log("log-more-btn clicked");
   slicePoint = slicePoint + numOfResults;
-
   let localData = JSON.parse(localStorage.getItem("localData"));
-  let slicedLocalData = localData.slice(slicePoint);
+  let slicedLocalData = localData.slice(slicePoint, localData.length-1);
 
   displayData(slicedLocalData, numOfResults, slicePoint);
 });
-
 }); // closing doc.ready()
+
+// window.onbeforeunload = () => {
+//   localStorage.removeItem("localData");
+//   localStorage.removeItem("wasSearched");
+// };
 
