@@ -1,0 +1,253 @@
+
+html {
+  box-sizing: border-box;
+}
+body{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  max-width: 97%;
+  margin: 0 auto;
+  padding:0;
+  background-image: url("img/night-sky.jpg");
+  background-repeat: repeat;
+}
+/* Fonts ----------------------- */
+h1,h2,h3,h4 {
+  color:rgb(28, 70, 134);
+  margin: 10px;
+}
+p{
+  margin: 10px 0;
+}
+hr{
+  height: 1px;
+  background-color:rgba(128, 128, 128, 0.557);
+  border: none;
+  margin-inline-start: 0;
+}
+#noInput, #noYear{
+  font-size: 0.9rem;
+  position: absolute; 
+  right: 8px;
+  top: -25px;
+}
+.white-bg {
+  background-color: #f8f9ff;
+}
+.white-txt {
+  color: #f8f9ff;
+}
+
+/* LAYOUT Containers, Divs ----------------*/
+.inl-blk {
+  display: inline-block;
+}
+.rel {
+  position: relative;
+}
+.blk{display: block;}
+.none{display: none;}
+.center {text-align:center;}
+
+/* HEADER --- */
+header{
+  /* border: 1px solid red; */
+  height: 75px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+header h2{
+  color: rgb(231, 233, 247);
+  line-height: 60px;
+  margin-left: 2em;
+}
+
+/* MAIN CCONTENT ---------------
+SEARCH BAR ---  */
+.search-div{
+  margin: 1.5rem auto 1rem auto;
+  width:90%;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+/* FORM ------ */
+form{
+  display: inline-block;
+  color: #f8f9ff;
+}
+
+.search-div input{
+  margin-left: 4px;
+  margin-right: 10px;
+  font-weight: 550;
+  padding: 5px 4px; 
+  border-radius: 3px; 
+   /* border: 2px solid rgba(22, 99, 194, 0.603); */
+   color: #1527b3;
+}
+input:focus{
+  outline: none;
+  /* border: 2px solid rgb(53, 119, 199);   */
+  box-shadow: 0 0 3px 3px rgb(179, 213, 239);         
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #8992d5;
+  opacity: 0.9; /* Firefox */
+  font-weight: 550;
+}
+
+
+#max-number{width: 35px;}   
+
+/* FB buttons -------- */
+#fb-btn {
+  display: inline-block;
+  position: relative;
+  top:7px; left: 2.5em;
+  min-width: 7em;
+}
+#gitlink{
+  display: inline-block;
+  margin-left: 4em;
+  color: #bcbffa;
+  transition: color 0.2s;
+}
+#gitlink:hover {
+  color: #8c95f0;
+}
+
+.search-cont{
+  /* border: 2px solid blue; */
+  margin-top: 0.5em;
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: space-between;
+}
+/* Flex for Search results container -------*/
+#search-list{
+  display: flex;
+  flex-flow: row wrap;
+}
+.item-cont {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 5px; 
+  flex: 1 0;
+  margin: 10px;
+  max-width: 30%;
+  min-width: 20%;
+}
+.item-header {
+  margin: 0 10px;
+}
+.box-border-shadow {
+  border: 1px solid rgb(204, 207, 228);
+  box-shadow: 0 0 1px 1px rgba(218, 229, 248, 0.6);
+}
+.red-box-shadow{
+  border: 1px solid rgb(214, 116, 198);
+  box-shadow: 0 0 2px 2px rgb(228, 135, 212);
+}
+
+.item-cont img{
+  display: block;
+  margin: 0px auto;
+  height: auto;
+  width:100%;  
+}
+.item-header h4{
+  line-height: 1.6;
+  display:flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.like-btn{margin-left: 5px;}
+
+.results {
+ border: 1px solid rgb(211, 209, 209);
+ padding: 6px;
+ border-radius: 4px;
+ width:100%;
+}
+
+#load-img{
+  display:none;
+  margin:10px auto;
+  /* width: 150px; */
+}
+#noData{
+  /* color: #d31b6b; */
+  margin: 0 auto;
+  font-size: 1.1em;
+  max-width: 50%;
+  text-align: center;
+}
+@keyframes scale {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
+/* Buttons ------------------------*/
+button {
+  padding: 4px; 
+  background-color: rgba(233, 243, 252, 0.708);
+  border-radius: 3px;
+  border: 1px solid  rgba(22, 99, 194, 0.603);
+  color:  rgb(22, 70, 129);
+  /* max-height: 27px; */
+  cursor:pointer;
+}
+button:active{
+  outline: none;
+  background-color:  rgb(35, 88, 153);
+  color: white;
+  border-color:  rgb(45, 109, 187);
+}
+.inactive-btn{
+  border: none;
+  cursor: initial;
+}
+.inactive-btn:active{
+  background-color: inherit;
+  color: inherit;
+  border: none;
+}
+#search_btn{
+  background-color:#defade;
+  border-color:  #6bdb8b;   
+}
+#search_btn:hover{
+  background-color:  #b1f0b1;
+}
+#search_btn:active{
+  background-color: #22b522;
+  color: white;
+}
+#loadmore-btn {
+  width:100%; 
+  height: 2.5rem;
+  font-size: 1.3rem;
+}
+
+.red {color:rgb(238, 93, 204);}
+.fa-heart {
+  color:rgb(226, 45, 184);
+  font-size: 1.7rem;
+  position: absolute; right: -3px; top:-6px;
+  font-weight: 600;
+}
+
+/* Lists --------------------- */
+ul, ol {
+  padding-inline-start: 10px;
+}
+li {
+  list-style-type: none;
+  margin-bottom: 5px;
+  }

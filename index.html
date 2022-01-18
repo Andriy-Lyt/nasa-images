@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nasa images</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-13/css/all.min.css">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+      <!-- FB SDK -->
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="XdSNIG2W"></script>    
+
+    <!-- <header>
+      <img id="sky-img" class="anim-sky" src="img/planet.jpg" alt="sky image">
+   </header>   -->
+   
+  <!-- SEARCH FORM -->
+   <div class="search-div center">
+    <form>
+        <label for="search_input" class="rel">Find images of the: 
+          <span id="noInput" class="red"> </span> 
+          <input type="text" placeholder="Subject" id="search_input"> 
+        </label>  
+
+        <label for="search_year" class="rel">Year:  
+          <span id="noYear" class="red"> </span>
+          <input type="text" placeholder="2000" id="search_year">
+        </label>        
+
+<!--      <label for="max-number" >Results: 
+          <input type="text" placeholder="10" id="max-number">
+        </label>        
+ -->
+        <button type="button" id="search_btn">Search</button> 
+    </form>
+
+  <!-- FB buttons -->
+    <div id="fb-btn">
+        <div class="fb-like" data-href="https://webelf.ca/movies" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+    </div>
+    <a id="gitlink" href="https://github.com/Andriy-Lytvynchuk/API-jQuery" target="_blank" class="">view on Github</a>
+  </div>
+
+  <!-- Search Results container  -->
+  <div class="search-cont">
+    <div class="results white-bg">  
+        <h3 id="resultsH3" class="center">Search Results </h3>   
+        <noscript>Please enable Java Script in the browser</noscript>  
+        <p id="descrip" class="center">
+          Please enter a search term into the Search field above to find Nasa images related to this subject. <!-- <span class='heart'>&#9825;</span>  -->
+        </p>  
+        <div id="noData" class= "red"></div>
+        <img src="img/loader-spin.gif" id="load-img" alt="Loading...">                   
+        <div id="search-list"></div>  
+        <button class="none" id="loadmore-btn">Load more images</button>
+    </div>
+
+  </div>  
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
