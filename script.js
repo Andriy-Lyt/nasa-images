@@ -23,8 +23,6 @@ $(document).ready(function() {
       const container = button.closest(".item-cont");
       const heart = container.find(".fa-heart");
       heart.toggleClass("none");
-      // console.log("heart has class none: ", heart.hasClass("none"));
-      // console.log(".like-btn was clicked");
     
       if(!heart.hasClass("none")) {
         button.html('Unlike');
@@ -50,7 +48,6 @@ $(document).ready(function() {
       for (let obj of localData) {
         if (obj.data[0].nasa_id == nasaId) {
           obj.data[0].liked = true;
-          // console.log("ln 155, liked = ", obj.data[0].liked);
           localStorage.setItem("localData", JSON.stringify(localData));
           break;
         };
@@ -73,8 +70,6 @@ $(document).ready(function() {
   let slicedLocalData = await localData.slice(sliceStart);
 
   await $.each(slicedLocalData, (index, item) => {
-      // console.log("index: ", index, );
-      // console.log("item: ", item, );
     
     if (index == numOfResults) {return false;}
 
@@ -143,7 +138,6 @@ function submitForm(e){
   e.preventDefault();
   localStorage.setItem("wasSearched", "true");
   localStorage.setItem("searchSubject", $("#search_input").val().trim());
-  // console.log("ln 118:", localStorage.getItem("search"));
   
   let inputError = false;
   const regEx_4digits = /^\d{4}$/;
@@ -208,40 +202,12 @@ $("#loadmore-btn").on('click', function(){
   // console.log("log-more-btn clicked");
 
   slicePoint = slicePoint + numOfResults;
-  // console.log("slicePoint: ", slicePoint);
 
   let localData = JSON.parse(localStorage.getItem("localData"));
   let slicedLocalData = localData.slice(slicePoint);
-  // console.log("slicedLocalData.length: ", slicedLocalData.length);
 
   displayData(slicedLocalData, numOfResults, slicePoint);
 });
 
-//clear local storage
-  // window.onbeforeunload = () => {
-  // localStorage.removeItem("localData");
-  // localStorage.removeItem("searchSubject");
-// }
-
-
 }); // closing doc.ready()
 
-// <span data-heartid='${index}' class='heart none'>&#9825;</span>  
-// $("#descrip").closest(".center, h3").css("background-color", "red");
-// console.log($("#descrip").closest(".center, h3").attr("id"));
-
-/*       if (!container.hasClass('hasHeart')) {
-        container.addClass('hasHeart');
-        container.prepend(`<span data-heartid='${index}' class='heart'>&#9825;</span>`)
-        button.html('Unlike');
-      } else {
-        container.removeClass('hasHeart');
-        container.find(".heart").remove();
-        button.html('Like');
-      }
-
-      console.log("button-id: ", button.attr("data-buttonid"));
-      console.log("heart-id:", container.find(".heart").attr("data-heartid"));
-
-
- */     
